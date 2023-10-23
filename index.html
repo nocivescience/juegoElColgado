@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+    body{
+        background-color: #000000;
+        color: #ffffff;
+        font-family: 'VT323', monospace;
+    }
+    .game-container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        position: relative;
+    }
+    .container > h1{
+        text-align: center;
+        user-select: none;
+    }
+    .game-container{
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 10%;
+        height: 35%;
+        width: 40vw;
+    }
+    .figure-container{
+        stroke: rgb(255, 255, 255);
+    }
+    .game-container.show{
+        display: none;
+    }
+    .letters-container{
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+        width: 100%;
+        height: 70px;
+        position: absolute;
+        top: 95%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .letters-container.correct-letters-container{
+        top: 125%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .notification-container.letters-container{
+        top: 155%;
+    }
+    .popup-container.letters-container{
+        top: 185%;
+    }
+    .popup-container>button{
+        background-color: #000000;
+        color: #ffffff;
+        border-radius: 5px;
+        height: 30px;
+        width: 60%;
+        box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+    }
+</style>
+<body>
+    <div class="container" id="container">
+        <h1>El Colgado UltraViolento</h1>
+        <div class="game-container">
+            <svg height="250" width="200" class="figure-container">
+                <!-- Rod -->
+                <line x1="60" y1="20" x2="140" y2="20" />
+                <line x1="140" y1="20" x2="140" y2="50" />
+                <line x1="60" y1="20" x2="60" y2="230" />
+                <line x1="20" y1="230" x2="100" y2="230" />
+        
+                <!-- Head -->
+                <circle cx="140" cy="70" r="20" class="figure-part" />
+                <!-- Body -->
+                <line x1="140" y1="90" x2="140" y2="150" class="figure-part" />
+                <!-- Arms -->
+                <line x1="140" y1="120" x2="120" y2="100" class="figure-part" />
+                <line x1="140" y1="120" x2="160" y2="100" class="figure-part" />
+                <!-- Legs -->
+                <line x1="140" y1="150" x2="120" y2="180" class="figure-part" />
+                <line x1="140" y1="150" x2="160" y2="180" class="figure-part" />
+              </svg>        
+              <div class="wrong-letters-container letters-container">
+                <div id="wrong-letters"></div>
+              </div>
+              <div class="correct-letters-container letters-container">
+                <div id="correct-letters"></div>
+            </div>
+            <div class="notification-container letters-container" id="notification-container">
+                <p>Ya has ingresado esta letra</p>
+            </div>
+            <div class="popup-container letters-container" id="popup-container">
+                <div id="popup">
+                    <h2 id="message-final"></h2>
+                </div>
+                <button id="play-button">Jugar de nuevo</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        const wordEl=document.getElementById('correct-letters');
+        const gameContainer=document.querySelector('.game-container');
+        const figureParts=document.querySelectorAll('.figure-part');
+        const wrongLetterEl=document.getElementById('wrong-letters');
+        const playBtnEl=document.getElementById('play-button');
+        const popupEl=document.getElementById('popup');
+        const notificationEl=document.getElementById('notification-container');
+        const messageFinalEl=document.getElementById('message-final');
+        let selectedWord=['programacion', 'javascript', 'computadora', 'teclado', 'mouse', 'monitor', 'pantalla', 'programador', 'programadora', 'programar'];
+        document.addEventListener('click', ()=>{
+            gameContainer.classList.toggle('show');
+        })
+    </script>
+</body>
+</html>
