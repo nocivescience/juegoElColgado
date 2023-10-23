@@ -5,9 +5,13 @@
 // const lista2 = [];
 // console.log(lista1==lista2);
 
-const palabra= 'paragua'
-console.log(palabra.includes('chile'));
-const lista1 = [1,2,3,4];
-console.log(lista1.reduce((a,b)=>b/a));
-console.log(palabra.replace(/a/g, 'o'))
-console.log(palabra);
+// const palabra= 'paragua'
+// console.log(palabra.includes('chile'));
+// const lista1 = [1,2,3,4];
+// console.log(lista1.reduce((a,b)=>b/a));
+// console.log(palabra.replace(/a/g, 'o'))
+// console.log(palabra);
+
+var lista= ['hola', 'como', 'estas', 'bien', 'adios'];
+const lista1=lista.splice(2,1);
+console.log(lista1);

@@ -149,7 +149,7 @@
         const notificationEl = document.getElementById('notification-container');
         const messageFinalEl = document.getElementById('message-final');
         const listWord = ['programacion', 'javascript', 'computadora', 'teclado', 'mouse', 'monitor', 'pantalla', 'programador', 'programadora', 'programar'];
-        const selectedWord = listWord[Math.floor(Math.random() * listWord.length)];
+        let selectedWord = listWord[Math.floor(Math.random() * listWord.length)];
         const letterCorrect = [];
         const letterWrong = [];
         function displayWord() {
@@ -163,13 +163,14 @@
                     `).join('')
                 }
             `;
-            console.log(selectedWord);
             const innerWord = wordEl.innerText.replace(/\n/g, '');
             if(innerWord === selectedWord) {
                 messageFinalEl.innerText = 'Felicidades, has ganado';
                 popupEl.style.display = 'flex';
-                gameContainer.classList.add('show');
             }
+        }
+        function updateWrongLetter(){
+            wrongLetterEl.innerHTML = 'hola mundo cruel'
         }
         function showNotification() {
             alert('Ya has ingresado esta letra');
@@ -184,8 +185,21 @@
                     } else {
                         showNotification();
                     }
+                }else{
+                    if(!letterWrong.includes(letter)){
+                        letterWrong.push(letter);
+                        updateWrongLetter();
+                    }else{
+                        showNotification();
+                    }
                 }
             }
+        })
+        playBtnEl.addEventListener('click', ()=>{
+            letterCorrect.splice(0);
+            letterWrong.splice(0);
+            selectedWord = listWord[Math.floor(Math.random() * listWord.length)];
+            displayWord();
         })
         displayWord();
         </script>
