@@ -14,6 +14,30 @@ let selectedWord = words[Math.floor(Math.random() * words.length)];
 const correctLetters = [];
 const wrongLetters = [];
 
+const tituloEl=document.getElementById('titulo');
+const letras= tituloEl.innerHTML.split('');
+const colores=['red','blue','green','yellow','pink','purple','orange','brown','black','white'];
+function cambiarColor(){
+  tituloEl.innerHTML=letras
+  .map((letter,i)=>`
+    <span style="color: ${colores[Math.floor(Math.random() * colores.length)]}">${letter}<apan>
+  `).join('');
+}
+
+// cambio de color del subtitulo
+
+function cambiarColorSubtitulo(){
+  const subtituloEl=document.getElementById('explicacion');
+  const letras2= subtituloEl.textContent.split('');
+  subtituloEl.innerHTML=letras2
+  .map((letter,i)=>`
+  <span style="color: ${colores[Math.floor(Math.random() * colores.length)]}">${letter}<apan>
+  `).join('');
+}
+cambiarColor();
+cambiarColorSubtitulo();
+setInterval(()=>{cambiarColorSubtitulo(), cambiarColor()},700);
+
 // Show hidden word
 function displayWord() {
   wordEl.innerHTML = `

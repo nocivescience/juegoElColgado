@@ -102,7 +102,7 @@
 
 <body>
     <div class="container" id="container">
-        <h1>El Colgado UltraViolento</h1>
+        <h1 id="titulo">El Colgado UltraViolento</h1>
         <div class="game-container">
             <svg height="250" width="200" class="figure-container">
                 <!-- Rod -->
@@ -152,6 +152,20 @@
         let selectedWord = listWord[Math.floor(Math.random() * listWord.length)];
         const letterCorrect = [];
         const letterWrong = [];
+        const colores= [
+            'red',
+            'yellow',
+            'orange',
+            'green',
+            'blue',
+        ]
+        function displayTitle(){
+            const titulo = document.getElementById('titulo');
+            const letras = titulo.innerText.split('');
+            titulo.innerHTML = letras.map(letra => `<span style="color: ${colores[Math.floor(Math.random() * colores.length)]}">${letra}</span>`).join('');
+        }
+        displayTitle();
+        setInterval(displayTitle, 1000);
         function displayWord() {
             wordEl.innerHTML = `
                 ${selectedWord
